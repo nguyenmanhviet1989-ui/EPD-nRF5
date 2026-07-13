@@ -1,4 +1,4 @@
-﻿#ifndef __LUNAR_H
+#ifndef __LUNAR_H
 #define __LUNAR_H
 #include <stdint.h>
 #include <string.h>
@@ -25,14 +25,14 @@ struct Lunar_Date {
     uint16_t Year;
 };
 
-extern const char Lunar_MonthString[13][7];
-extern const char Lunar_MonthLeapString[2][4];
+extern const char Lunar_MonthString[13][10];
+extern const char Lunar_MonthLeapString[2][6];
 extern const char Lunar_DateString[31][7];
 extern const char Lunar_DayString[7][4];
-extern const char Lunar_ZodiacString[12][4];
-extern const char Lunar_StemStrig[10][4];
-extern const char Lunar_BranchStrig[12][4];
-extern const char JieQiStr[24][7];
+extern const char Lunar_ZodiacString[12][8];
+extern const char Lunar_StemStrig[10][5];
+extern const char Lunar_BranchStrig[12][5];
+extern const char JieQiStr[24][20];
 
 void LUNAR_SolarToLunar(struct Lunar_Date* lunar, uint16_t solar_year, uint8_t solar_month, uint8_t solar_date);
 uint8_t LUNAR_GetZodiac(const struct Lunar_Date* lunar);
