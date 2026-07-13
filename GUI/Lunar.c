@@ -1,22 +1,28 @@
-﻿#include "Lunar.h"
+#include "Lunar.h"
 
-const char Lunar_MonthString[13][7] = {"----", "正月", "二月", "三月", "四月", "五月", "六月",
-                                       "七月", "八月", "九月", "十月", "冬月", "腊月"};
+const char Lunar_MonthString[13][10] = {"----",    "Month 1",  "Month 2", "Month 3", "Month 4",
+                                        "Month 5", "Month 6",  "Month 7", "Month 8", "Month 9",
+                                        "Month 10", "Month 11", "Month 12"};
 
-const char Lunar_MonthLeapString[2][4] = {" ", "闰"};
+const char Lunar_MonthLeapString[2][6] = {"", "Leap "};
 
-const char Lunar_DateString[31][7] = {"----", "初一", "初二", "初三", "初四", "初五", "初六", "初七",
-                                      "初八", "初九", "初十", "十一", "十二", "十三", "十四", "十五",
-                                      "十六", "十七", "十八", "十九", "二十", "廿一", "廿二", "廿三",
-                                      "廿四", "廿五", "廿六", "廿七", "廿八", "廿九", "三十"};
+const char Lunar_DateString[31][7] = {"----",  "Day 1",  "Day 2",  "Day 3",  "Day 4",  "Day 5",  "Day 6",
+                                      "Day 7", "Day 8",  "Day 9",  "Day 10", "Day 11", "Day 12", "Day 13",
+                                      "Day 14","Day 15", "Day 16", "Day 17", "Day 18", "Day 19", "Day 20",
+                                      "Day 21","Day 22", "Day 23", "Day 24", "Day 25", "Day 26", "Day 27",
+                                      "Day 28","Day 29", "Day 30"};
 
-const char Lunar_DayString[7][4] = {"日", "一", "二", "三", "四", "五", "六"};
+const char Lunar_DayString[7][4] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
-const char Lunar_ZodiacString[12][4] = {"猴", "鸡", "狗", "猪", "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊"};
+const char Lunar_ZodiacString[12][8] = {"Monkey", "Rooster", "Dog",   "Pig",    "Rat",   "Ox",
+                                        "Tiger",  "Rabbit",  "Dragon", "Snake", "Horse", "Goat"};
 
-const char Lunar_StemStrig[10][4] = {"庚", "辛", "壬", "癸", "甲", "乙", "丙", "丁", "戊", "己"};
+// Heavenly Stems (天干), romanized (Pinyin)
+const char Lunar_StemStrig[10][5] = {"Geng", "Xin", "Ren", "Gui", "Jia", "Yi", "Bing", "Ding", "Wu", "Ji"};
 
-const char Lunar_BranchStrig[12][4] = {"申", "酉", "戌", "亥", "子", "丑", "寅", "卯", "辰", "巳", "午", "未"};
+// Earthly Branches (地支), romanized (Pinyin)
+const char Lunar_BranchStrig[12][5] = {"Shen", "You",  "Xu",  "Hai", "Zi",  "Chou",
+                                       "Yin",  "Mao",  "Chen","Si",  "Wu",  "Wei"};
 
 /* 2000 ~ 2199  */
 const uint32_t lunar_month_days[] = {
@@ -218,12 +224,14 @@ static const uint8_t days[24] = {
     7, 23, 8, 23, 8, 23,  // 七月到九月  的节气基本日期
     8, 24, 8, 22, 7, 22,  // 十月到十二月的节气基本日期
 };
-/*立春、雨水、惊蛰、春分、清明、谷雨、立夏、小满、芒种、夏至、小暑、大暑、立秋、处暑、白露、秋分、寒露、霜降、立冬、小雪、大雪、冬至、小寒、大寒
- *
- */
-const char JieQiStr[24][7] = {
-    "小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至",
-    "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至",
+/* The 24 Solar Terms (二十四节气), in order starting from Minor Cold */
+const char JieQiStr[24][20] = {
+    "Minor Cold",     "Major Cold",     "Start of Spring", "Rain Water",
+    "Insects Awaken", "Spring Equinox", "Clear and Bright","Grain Rain",
+    "Start of Summer","Grain Buds",     "Grain in Ear",    "Summer Solstice",
+    "Minor Heat",     "Major Heat",     "Start of Autumn", "End of Heat",
+    "White Dew",      "Autumn Equinox", "Cold Dew",        "Frost Descent",
+    "Start of Winter","Minor Snow",     "Major Snow",      "Winter Solstice",
 };
 const uint8_t MonthDayMax[12] = {
     31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,
